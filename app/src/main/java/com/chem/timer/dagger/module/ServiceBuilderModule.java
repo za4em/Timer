@@ -1,6 +1,10 @@
 package com.chem.timer.dagger.module;
 
+import com.chem.timer.dagger.scope.ServiceScope;
+import com.chem.timer.service.ServiceTimer;
+
 import dagger.Module;
+import dagger.android.ContributesAndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
 /**
@@ -11,9 +15,9 @@ import dagger.android.support.AndroidSupportInjectionModule;
 })
 public interface ServiceBuilderModule {
 
-//    @ServiceScope
-//    @ContributesAndroidInjector
-//    ServiceDownloadAudio serviceDownloadAudioInjector();
+    @ServiceScope
+    @ContributesAndroidInjector
+    ServiceTimer serviceTimerInjector();
 
 
 }
