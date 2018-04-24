@@ -31,36 +31,40 @@ public class ServiceTimer extends BaseService {
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
         super.onStartCommand(intent, startId, startId);
-        if (!isTimerRunning) {
+        if (handler == null) {
             timerInteractor
                     .getSeconds()
-                    .subscribe(this::initTimer, Throwable::printStackTrace);
+                    .subscribe(seconds -> this.seconds = seconds, Throwable::printStackTrace);
         }
-        if(intent != null) {
+        if (intent != null) {
             this.seconds += intent.getIntExtra(INTENT_TIMER_ADD_SECONDS, 0);
+        }
+        if (!isTimerRunning) {
+            initTimer();
         }
         return START_NOT_STICKY;
     }
 
-    private void initTimer(int savedSeconds) {
-        this.seconds = savedSeconds;
+    private void initTimer() {
         isTimerRunning = true;
+        sendIntent(seconds);
 
         handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                sendIntent(seconds);
-                if (seconds>0) {
+                if (seconds > 0) {
                     seconds--;
                 }
-                handler.postDelayed(this, 1000);
+                sendIntent(seconds);
+                isTimerRunning = seconds != 0;
+                if (isTimerRunning)
+                    handler.postDelayed(this, 1000);
             }
         });
     }
 
     private void sendIntent(int seconds) {
-
         Intent intent = new Intent(MESSAGE_TIMER_SECONDS);
         intent.putExtra(INTENT_TIMER_SECONDS, seconds);
         LocalBroadcastManager.getInstance(ServiceTimer.this).sendBroadcast(intent);

@@ -17,4 +17,7 @@ public interface TimerView extends BaseView {
     @StateStrategyType(AddToEndSingleStrategy.class)
     void updateClickCounter(String countText);
 
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void showDialog();
+
 }

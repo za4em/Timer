@@ -34,4 +34,14 @@ public class TimerRepository implements ITimerRepository {
     public Completable setTimerSeconds(int seconds) {
         return Completable.fromRunnable(()->timerStorage.setTimerSeconds(seconds));
     }
+
+    @Override
+    public Single<Integer> getTimerClicks() {
+        return Single.fromCallable(()->timerStorage.getClickCount());
+    }
+
+    @Override
+    public Completable addTimerClick() {
+        return Completable.fromRunnable(()->timerStorage.addClickCount());
+    }
 }

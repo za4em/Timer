@@ -8,9 +8,9 @@ public interface Provider {
 
         void setTimerSeconds(int seconds);
 
-        void setClickCount(int clickCount);
+        void addClickCount();
 
-        void getClickCount();
+        int getClickCount();
     }
 
 

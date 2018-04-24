@@ -39,4 +39,11 @@ public class TimerInteractor {
         serviceManager.startService(additionalSeconds);
     }
 
+    public Single<Integer> getClickCount(){
+        return timerRepository.getTimerClicks();
+    }
+
+    public Completable addTimerClick(){
+        return timerRepository.addTimerClick();
+    }
 }

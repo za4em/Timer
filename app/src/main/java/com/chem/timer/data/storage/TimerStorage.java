@@ -11,6 +11,7 @@ public class TimerStorage implements Provider.TimerStorage {
     private static final String TIMER_SECONDS = "seconds";
     private static final int DEFAULT_SECONDS = 20;
 
+    private static final String TIMER_CLICKS = "clicks";
 
 
     @Inject
@@ -28,12 +29,13 @@ public class TimerStorage implements Provider.TimerStorage {
     }
 
     @Override
-    public void setClickCount(int clickCount) {
-
+    public void addClickCount() {
+        int clickCount = getClickCount() + 1;
+        Hawk.put(TIMER_CLICKS, clickCount);
     }
 
     @Override
-    public void getClickCount() {
-
+    public int getClickCount() {
+        return Hawk.get(TIMER_CLICKS, 0);
     }
 }

@@ -12,4 +12,8 @@ public interface ITimerRepository {
     Single<Integer> getTimerSeconds();
 
     Completable setTimerSeconds(int seconds);
+
+    Single<Integer> getTimerClicks();
+
+    Completable addTimerClick();
 }

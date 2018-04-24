@@ -19,6 +19,7 @@
         android:id="@+id/timer_text_view"
         android:layout_above="@id/timer_five_second_button"
         android:layout_centerHorizontal="true"
+         android:textSize="@dimen/generic_text_size_large"
         android:layout_marginBottom="@dimen/medium_margin"/>
 
     <TextView

@@ -2,11 +2,12 @@ package com.chem.timer.presentation.timer;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
+import android.support.v7.app.AlertDialog;
 import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -36,6 +37,7 @@ public class TimerFragment extends BaseFragment implements TimerView {
     TextView counterText;
 
     private LocalBroadcastManager localBroadcastManager;
+    private AlertDialog dialog;
 
     @ProvidePresenter
     TimerPresenter providePresenter() {
@@ -76,7 +78,7 @@ public class TimerFragment extends BaseFragment implements TimerView {
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction()==null)
+            if (intent.getAction() == null)
                 return;
             if (intent.getAction().equals(ServiceTimer.MESSAGE_TIMER_SECONDS)) {
                 int timerSeconds = intent.getIntExtra(ServiceTimer.INTENT_TIMER_SECONDS,
@@ -94,6 +96,30 @@ public class TimerFragment extends BaseFragment implements TimerView {
     @Override
     public void updateClickCounter(String countText) {
         counterText.setText(countText);
+    }
+
+    @Override
+    public void showDialog() {
+        if (dialog == null){
+            initDialog();
+        }
+        dialog.show();
+    }
+
+    private void initDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder
+                .setMessage(R.string.timer_dialog_message)
+                .setTitle(R.string.timer_dialog_title);
+        builder.setPositiveButton(
+                R.string.timer_dialog_positive,
+                (dialog, id) -> presenter.onButtonTwentySecondClick()
+        );
+        builder.setNegativeButton(
+                R.string.timer_dialog_negative,
+                (dialog, id) -> dialog.dismiss()
+        );
+        dialog = builder.create();
     }
 
     @Override

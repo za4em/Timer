@@ -6,7 +6,6 @@ import com.chem.timer.presentation.base.BasePresenter;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import ru.terrakok.cicerone.Router;
 
 /**
@@ -31,23 +30,39 @@ public class TimerPresenter extends BasePresenter<TimerView> {
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
         timerInteractor.startService();
+        updateClickCount();
     }
 
-    public void onButtonFiveSecondClick(){
+    private void updateClickCount() {
+        timerInteractor
+                .getClickCount()
+                .subscribe(clicksCount ->
+                        getViewState().updateClickCounter(
+                                String.format("Количество кликов: %d", clicksCount)    // TODO: 24.04.2018 unhardcode
+                        ), Throwable::printStackTrace
+                );
+    }
+
+    public void onButtonFiveSecondClick() {
         timerInteractor.addSeconds(DEFAULT_ADDITIONAL_SECONDS);
+        timerInteractor
+                .addTimerClick()
+                .subscribe(this::updateClickCount, Throwable::printStackTrace);
 
     }
 
-    public void onButtonTwentySecondClick(){
+    public void onButtonTwentySecondClick() {
         timerInteractor.addSeconds(DEFAULT_SECONDS);
     }
 
-    public void onButtonCancelClick(){
+    public void onButtonCancelClick() {
         router.exit();
     }
 
     public void onTimerSecondsUpdated(int timerSeconds) {
         getViewState().updateTimerText(formatTime(timerSeconds));
+        if (timerSeconds == 0)
+            getViewState().showDialog();
     }
 
     private String formatTime(int seconds) {
