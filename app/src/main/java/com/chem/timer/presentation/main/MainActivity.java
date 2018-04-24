@@ -19,7 +19,7 @@ public class MainActivity extends BaseActivity implements MainView {
     MainPresenter presenter;
 
     @ProvidePresenter
-    MainPresenter providePresenter(){
+    MainPresenter providePresenter() {
         return presenter;
     }
 

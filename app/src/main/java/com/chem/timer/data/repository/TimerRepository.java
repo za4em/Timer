@@ -27,21 +27,21 @@ public class TimerRepository implements ITimerRepository {
 
     @Override
     public Single<Integer> getTimerSeconds() {
-        return Single.fromCallable(()->timerStorage.getTimerSeconds());
+        return Single.fromCallable(() -> timerStorage.getTimerSeconds());
     }
 
     @Override
     public Completable setTimerSeconds(int seconds) {
-        return Completable.fromRunnable(()->timerStorage.setTimerSeconds(seconds));
+        return Completable.fromRunnable(() -> timerStorage.setTimerSeconds(seconds));
     }
 
     @Override
     public Single<Integer> getTimerClicks() {
-        return Single.fromCallable(()->timerStorage.getClickCount());
+        return Single.fromCallable(() -> timerStorage.getClickCount());
     }
 
     @Override
     public Completable addTimerClick() {
-        return Completable.fromRunnable(()->timerStorage.addClickCount());
+        return Completable.fromRunnable(() -> timerStorage.addClickCount());
     }
 }

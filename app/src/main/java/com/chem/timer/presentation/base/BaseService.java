@@ -1,6 +1,5 @@
 package com.chem.timer.presentation.base;
 
-import android.app.IntentService;
 import android.app.Service;
 
 import dagger.android.AndroidInjection;
@@ -10,7 +9,6 @@ import dagger.android.AndroidInjection;
  */
 
 public abstract class BaseService extends Service {
-
 
 
     @Override

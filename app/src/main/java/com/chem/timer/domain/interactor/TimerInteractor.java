@@ -23,27 +23,27 @@ public class TimerInteractor {
         this.serviceManager = serviceManager;
     }
 
-    public Single<Integer> getSeconds(){
+    public Single<Integer> getSeconds() {
         return timerRepository.getTimerSeconds();
     }
 
-    public Completable setSeconds(int seconds){
+    public Completable setSeconds(int seconds) {
         return timerRepository.setTimerSeconds(seconds);
     }
 
-    public void startService(){
+    public void startService() {
         serviceManager.startService();
     }
 
-    public void addSeconds(int additionalSeconds){
+    public void addSeconds(int additionalSeconds) {
         serviceManager.startService(additionalSeconds);
     }
 
-    public Single<Integer> getClickCount(){
+    public Single<Integer> getClickCount() {
         return timerRepository.getTimerClicks();
     }
 
-    public Completable addTimerClick(){
+    public Completable addTimerClick() {
         return timerRepository.addTimerClick();
     }
 }

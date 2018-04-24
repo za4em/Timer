@@ -1,7 +1,6 @@
 package com.chem.timer.dagger.module;
 
 
-
 import com.chem.timer.dagger.scope.FragmentScope;
 import com.chem.timer.presentation.timer.TimerFragment;
 

@@ -23,7 +23,7 @@ public class PresenterModule {
 
     @FragmentScope
     @Provides
-    TimerPresenter provideTimerPresenter(Router router, TimerInteractor timerInteractor){
+    TimerPresenter provideTimerPresenter(Router router, TimerInteractor timerInteractor) {
         return new TimerPresenter(router, timerInteractor);
     }
 
