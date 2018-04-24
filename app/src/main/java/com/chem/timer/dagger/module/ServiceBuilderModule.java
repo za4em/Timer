@@ -11,7 +11,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
  * Created by mi on 20.11.2017.
  */
 @Module(includes = {
-        AndroidSupportInjectionModule.class
+        AndroidSupportInjectionModule.class,
+        InteractorModule.class
 })
 public interface ServiceBuilderModule {
 

@@ -2,7 +2,6 @@
 
 buildscript {
 
-    ext.realmVersion = '4.3.1'
     ext.retrolambdaVersion = '3.7.0'
 
     repositories {
@@ -14,7 +13,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath "io.realm:realm-gradle-plugin:$realmVersion"
         classpath "me.tatarka:gradle-retrolambda:$retrolambdaVersion"
     }
 }

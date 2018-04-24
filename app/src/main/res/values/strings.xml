@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Timer</string>
+    <string name="button_text_plus_five_second">+5 Секунд!</string>
 </resources>

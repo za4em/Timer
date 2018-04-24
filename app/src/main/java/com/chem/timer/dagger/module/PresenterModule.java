@@ -2,6 +2,7 @@ package com.chem.timer.dagger.module;
 
 import com.chem.timer.dagger.scope.ActivityScope;
 import com.chem.timer.dagger.scope.FragmentScope;
+import com.chem.timer.domain.interactor.TimerInteractor;
 import com.chem.timer.presentation.main.MainPresenter;
 import com.chem.timer.presentation.timer.TimerPresenter;
 
@@ -9,7 +10,9 @@ import dagger.Module;
 import dagger.Provides;
 import ru.terrakok.cicerone.Router;
 
-@Module
+@Module(includes = {
+        InteractorModule.class
+})
 public class PresenterModule {
 
     @ActivityScope
@@ -20,8 +23,8 @@ public class PresenterModule {
 
     @FragmentScope
     @Provides
-    TimerPresenter provideTimerPresenter(Router router){
-        return new TimerPresenter(router);
+    TimerPresenter provideTimerPresenter(Router router, TimerInteractor timerInteractor){
+        return new TimerPresenter(router, timerInteractor);
     }
 
 }

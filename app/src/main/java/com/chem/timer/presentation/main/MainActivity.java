@@ -36,9 +36,8 @@ public class MainActivity extends BaseActivity implements MainView {
             case ScreensKeyUtils.FRAGMENT_TIMER_SCREEN:
                 fragment = TimerFragment.newInstance();
                 break;
-
+            //
         }
-
         return fragment;
     }
 

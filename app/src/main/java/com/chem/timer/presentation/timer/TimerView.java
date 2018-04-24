@@ -1,5 +1,8 @@
 package com.chem.timer.presentation.timer;
 
+import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
+import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
+import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import com.chem.timer.presentation.base.BaseView;
 
 /**
@@ -7,4 +10,11 @@ import com.chem.timer.presentation.base.BaseView;
  */
 
 public interface TimerView extends BaseView {
+
+    @StateStrategyType(AddToEndSingleStrategy.class)
+    void updateTimerText(String timeText);
+
+    @StateStrategyType(AddToEndSingleStrategy.class)
+    void updateClickCounter(String countText);
+
 }
