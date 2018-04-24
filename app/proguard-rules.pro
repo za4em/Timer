@@ -51,11 +51,11 @@
 -keep class * implements com.google.gson.JsonDeserializer
 
 # Moxy
-#-keep class **$$PresentersBinder
-#-keep class **$$State
-#-keep class **$$ParamsHolder
-#-keep class **$$ViewStateClassNameProvider
-#-keepnames class * extends com.arellomobile.mvp.*
+-keep class **$$PresentersBinder
+-keep class **$$State
+-keep class **$$ParamsHolder
+-keep class **$$ViewStateClassNameProvider
+-keepnames class * extends com.arellomobile.mvp.*
 
 # Butterknife
 -keep public class * implements butterknife.Unbinder { public <init>(**, android.view.View); }

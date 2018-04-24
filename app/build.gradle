@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
 apply plugin: 'me.tatarka.retrolambda'
 apply from: 'version.gradle'
 
@@ -147,7 +146,6 @@ dependencies {
     provided "frankiesardo:icepick-processor:$icePickVertion"
 
     compile 'com.android.support:multidex:1.0.3'
-    androidTestCompile 'com.google.code.findbugs:jsr305:3.0.2'
 
     //Fabric
 //    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Timer</string>
+    <string name="button_text_plus_five_second">+5 Секунд!</string>
+
+    <!--dialog-->
+    <string name="timer_dialog_message">Что делать?</string>
+    <string name="timer_dialog_title">Время вышло</string>
+    <string name="timer_dialog_positive">Прибавить 20 сек</string>
+    <string name="timer_dialog_negative">Закрыть</string>
 </resources>
